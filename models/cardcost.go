@@ -5,32 +5,52 @@ import (
 	"strings"
 )
 
-func (cc CardCost) Compare(cc2 CardCost) int {
-	if cc.Coins == cc2.Coins {
-		if cc.Potions == cc2.Potions {
-			if cc.Debt == cc2.Debt {
-				return 0
-			}
-
-			if cc.Debt > cc2.Debt {
-				return 1
-			}
-
-			return -1
-		}
-
-		if cc.Potions > cc2.Potions {
-			return 1
-		}
-
-		return -1
-	}
-
+func (cc CardCost) compareCoins(cc2 CardCost) int {
 	if cc.Coins > cc2.Coins {
 		return 1
 	}
 
-	return -1
+	if cc.Coins < cc2.Coins {
+		return -1
+	}
+
+	return 0
+}
+
+func (cc CardCost) comparePotions(cc2 CardCost) int {
+	if cc.Potions > cc2.Potions {
+		return 1
+	}
+
+	if cc.Potions < cc2.Potions {
+		return -1
+	}
+
+	return 0
+}
+
+func (cc CardCost) compareDebt(cc2 CardCost) int {
+	if cc.Debt > cc2.Debt {
+		return 1
+	}
+
+	if cc.Debt < cc2.Debt {
+		return -1
+	}
+
+	return 0
+}
+
+func (cc CardCost) Compare(cc2 CardCost) int {
+	if cc.compareCoins(cc2) == 0 {
+		if cc.comparePotions(cc2) == 0 {
+			return cc.compareDebt(cc2)
+		}
+
+		return cc.comparePotions(cc2)
+	}
+
+	return cc.compareCoins(cc2)
 }
 
 func (cc CardCost) String() string {

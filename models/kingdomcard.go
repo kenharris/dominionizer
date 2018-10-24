@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"strings"
 )
 
 func (kc KingdomCard) CompareCost(kc2 KingdomCard) int {
@@ -9,15 +10,7 @@ func (kc KingdomCard) CompareCost(kc2 KingdomCard) int {
 }
 
 func (kc KingdomCard) CompareName(kc2 KingdomCard) int {
-	if kc.Name == kc2.Name {
-		return 0
-	}
-
-	if kc.Name < kc2.Name {
-		return -1
-	}
-
-	return 1
+	return strings.Compare(kc.Name, kc2.Name)
 }
 
 func (kc KingdomCard) String() string {

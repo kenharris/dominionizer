@@ -11,7 +11,7 @@ func (k *Kingdom) SortByName() {
 		left := k.Cards[i]
 		right := k.Cards[j]
 
-		return left.CompareName(right) > 0
+		return left.CompareName(right) < 0
 	})
 }
 

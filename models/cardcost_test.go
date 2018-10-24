@@ -3,7 +3,7 @@ package models_test
 import (
 	"testing"
 
-	"github.com/kenharris/dominion-shuffle/models"
+	"github.com/kenharris/dominionizer/models"
 )
 
 func Test_CardCostEqual(t *testing.T) {
