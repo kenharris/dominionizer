@@ -1,14 +1,17 @@
 package main
 
 import (
-	"fmt" // "context"
-	// "log"
+	"fmt"
 
 	"github.com/kenharris/dominionizer"
 )
 
 func main() {
-	kingdom := dominionizer.RandomizeKingdom()
+	shuffler := dominionizer.NewShuffler()
+	shuffler.IncludeSets(dominionizer.Dominion, dominionizer.Intrigue, dominionizer.Prosperity)
+	shuffler.BlacklistCards("Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room")
+	shuffler.UnblacklistCards("Chapel")
+	kingdom := shuffler.RandomizeKingdom(10)
 
 	fmt.Println("Kingdom:")
 	fmt.Println(kingdom)
