@@ -8,14 +8,14 @@ import (
 
 // Kingdom ...
 type Kingdom struct {
-	cards []KingdomCard
+	cards []Card
 }
 
-func (k *Kingdom) AddCard(kc KingdomCard) {
+func (k *Kingdom) AddCard(kc Card) {
 	k.cards = append(k.cards, kc)
 }
 
-func (k *Kingdom) GetCards() []KingdomCard {
+func (k *Kingdom) GetCards() []Card {
 	return k.cards
 }
 
