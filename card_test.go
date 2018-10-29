@@ -7,27 +7,27 @@ import (
 )
 
 func Test_CardsEqualCost(t *testing.T) {
-	kc1 := dominionizer.Card{
+	c1 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
-	kc2 := dominionizer.Card{
+	c2 := dominionizer.Card{
 		Name: "Woodcutter",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
 
-	if kc1.CompareCost(kc2) != 0 {
+	if c1.CompareCost(c2) != 0 {
 		t.Error()
 	}
 }
 
 func Test_CardsEqualName(t *testing.T) {
-	kc1 := dominionizer.Card{
+	c1 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
-	kc2 := dominionizer.Card{
+	c2 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
 
-	if kc1.CompareName(kc2) != 0 {
+	if c1.CompareName(c2) != 0 {
 		t.Error()
 	}
 }

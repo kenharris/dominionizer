@@ -10,14 +10,15 @@ func main() {
 	shuffler := dominionizer.NewShuffler()
 	shuffler.IncludeSets(dominionizer.Dominion, dominionizer.Intrigue, dominionizer.Prosperity)
 	shuffler.BlacklistCards("Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room")
-	shuffler.UnblacklistCards("Chapel")
-	kingdom := shuffler.RandomizeKingdom(10)
+	shuffler.UnblacklistCards("Chapel", "Smithy")
+	shuffler.SetTypeRule(dominionizer.CardTypeAttack, 1)
+	kingdom := shuffler.RandomizeKingdom(60)
 
 	fmt.Println("Kingdom:")
 	fmt.Println(kingdom)
 
 	kingdom.SortByCost()
-	fmt.Println("Kingdom (Sorted by Cost):")
+	fmt.Printf("Kingdom - Sorted by Cost (%d):\n", len(kingdom.GetCards()))
 	fmt.Println(kingdom)
 
 	kingdom.SortByName()
