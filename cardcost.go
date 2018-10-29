@@ -41,6 +41,7 @@ func (cc CardCost) compareDebt(cc2 CardCost) int {
 	return 0
 }
 
+// Compare will compare card costs and return an int representing their relative comparison.
 func (cc CardCost) Compare(cc2 CardCost) int {
 	if cc.compareCoins(cc2) == 0 {
 		if cc.comparePotions(cc2) == 0 {
@@ -83,7 +84,7 @@ func (cc CardCost) String() string {
 	return sb.String()
 }
 
-//CardCost ...
+//CardCost represents the cost of a card in terms of coins, potions, and/or debt
 type CardCost struct {
 	Coins   int
 	Potions int

@@ -1,58 +1,66 @@
 package dominionizer
 
-// Shuffler is a type which is used to control generation of kingdoms by observing ShufflerOptions rules and abiding by them
-type shuffler struct {
-	Options ShufflerOptions
-	repo    cardRepository
+// Shuffler is a type which is used to control generation of kingdoms by observing rules and abiding by them
+type Shuffler struct {
+	IncludedSets     map[SetName]bool
+	BlacklistedCards map[string]bool
+	MustIncludeCards []string
+	TypeRules        map[CardType]int
+	AllCards         []Card
+	CardReader       CardDataReader
 }
 
-// NewShuffler returns a shuffler configured with defaults
-func NewShuffler() shuffler {
-	s := shuffler{}
-	s.repo = cardRepository{}
-	s.repo.LoadCards()
+func (s *Shuffler) BlacklistCards(cards ...string) {
+	if s.BlacklistedCards == nil {
+		s.BlacklistedCards = map[string]bool{}
+	}
 
-	s.Options = ShufflerOptions{}
-	s.Options.IncludedSets = map[SetName]bool{}
-	s.Options.BlacklistedCards = map[string]bool{}
-	s.Options.MustIncludeCards = []string{}
-	s.Options.TypeRules = map[CardType]int{}
-
-	return s
-}
-
-func (s *shuffler) BlacklistCards(cards ...string) {
 	for _, kc := range cards {
-		s.Options.BlacklistedCards[kc] = true
+		s.BlacklistedCards[kc] = true
 	}
 }
 
-func (s *shuffler) UnblacklistCards(cards ...string) {
+func (s *Shuffler) UnblacklistCards(cards ...string) {
+	if s.BlacklistedCards == nil {
+		s.BlacklistedCards = map[string]bool{}
+	}
+
 	for _, kc := range cards {
-		s.Options.BlacklistedCards[kc] = false
+		s.BlacklistedCards[kc] = false
 	}
 }
 
-func (s *shuffler) IncludeSets(k ...SetName) {
+func (s *Shuffler) IncludeSets(k ...SetName) {
+	if s.IncludedSets == nil {
+		s.IncludedSets = map[SetName]bool{}
+	}
+
 	for _, kn := range k {
-		s.Options.IncludedSets[kn] = true
+		s.IncludedSets[kn] = true
 	}
 }
 
-func (s *shuffler) ExcludeSets(k ...SetName) {
+func (s *Shuffler) ExcludeSets(k ...SetName) {
+	if s.IncludedSets == nil {
+		s.IncludedSets = map[SetName]bool{}
+	}
+
 	for _, kn := range k {
-		s.Options.IncludedSets[kn] = false
+		s.IncludedSets[kn] = false
 	}
 }
 
-func (s *shuffler) AddMustIncludeCards(cards ...string) {
+func (s *Shuffler) AddMustIncludeCards(cards ...string) {
 	for _, c := range cards {
-		s.Options.MustIncludeCards = append(s.Options.MustIncludeCards, c)
+		s.MustIncludeCards = append(s.MustIncludeCards, c)
 	}
 }
 
-func (s *shuffler) SetTypeRule(ct CardType, num int) {
-	s.Options.TypeRules[ct] = num
+func (s *Shuffler) SetTypeRule(ct CardType, num int) {
+	if s.TypeRules == nil {
+		s.TypeRules = map[CardType]int{}
+	}
+	s.TypeRules[ct] = num
 }
 
 func excludeBlacklistCards(cards []Card, blackList []string) []Card {
@@ -75,17 +83,32 @@ func excludeBlacklistCards(cards []Card, blackList []string) []Card {
 	return retCards
 }
 
+func (s *Shuffler) getSetCards() []Card {
+	if len(s.AllCards) == 0 {
+		s.AllCards = s.CardReader.ReadCards()
+	}
+	retCards := []Card{}
+
+	for _, c := range s.AllCards {
+		if s.IncludedSets[c.Set] == true {
+			retCards = append(retCards, c)
+		}
+	}
+
+	return retCards
+}
+
 // RandomizeKingdom is a function which generates a randomized kingdom
-func (s shuffler) RandomizeKingdom(numCards int) Kingdom {
+func (s *Shuffler) RandomizeKingdom(numCards int) Kingdom {
 	k := Kingdom{}
-	setCards := shuffle(s.repo.getSetCards(s.Options.IncludedSets))
+	setCards := shuffle(s.getSetCards())
 
 	cardIndex := 0
 	for len(k.cards) < numCards && cardIndex < len(setCards) {
 		cardToConsider := setCards[cardIndex]
 		cardIndex++
 
-		if s.Options.BlacklistedCards[cardToConsider.Name] == true {
+		if s.BlacklistedCards[cardToConsider.Name] == true {
 			continue
 		}
 

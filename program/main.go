@@ -4,15 +4,18 @@ import (
 	"fmt"
 
 	"github.com/kenharris/dominionizer"
+	"github.com/kenharris/dominionizer/json"
 )
 
 func main() {
-	shuffler := dominionizer.NewShuffler()
+	shuffler := dominionizer.Shuffler{
+		CardReader: json.CardReader{FileName: "../json/cards.json"},
+	}
 	shuffler.IncludeSets(dominionizer.Dominion, dominionizer.Intrigue, dominionizer.Prosperity)
 	shuffler.BlacklistCards("Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room")
 	shuffler.UnblacklistCards("Chapel", "Smithy")
 	shuffler.SetTypeRule(dominionizer.CardTypeAttack, 1)
-	kingdom := shuffler.RandomizeKingdom(60)
+	kingdom := shuffler.RandomizeKingdom(10)
 
 	fmt.Println("Kingdom:")
 	fmt.Println(kingdom)
