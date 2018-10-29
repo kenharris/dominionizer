@@ -10,10 +10,10 @@ import (
 func main() {
 	shuffler := dominionizer.Shuffler{
 		CardReader: json.CardReader{FileName: "../json/cards.json"},
+		Sets:       []dominionizer.SetName{dominionizer.Dominion, dominionizer.Intrigue, dominionizer.Prosperity},
+		Blacklist:  []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"},
 	}
-	shuffler.IncludeSets(dominionizer.Dominion, dominionizer.Intrigue, dominionizer.Prosperity)
-	shuffler.BlacklistCards("Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room")
-	shuffler.UnblacklistCards("Chapel", "Smithy")
+
 	shuffler.SetTypeRule(dominionizer.CardTypeAttack, 1)
 	kingdom := shuffler.RandomizeKingdom(10)
 

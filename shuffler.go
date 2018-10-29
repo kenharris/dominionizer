@@ -2,58 +2,13 @@ package dominionizer
 
 // Shuffler is a type which is used to control generation of kingdoms by observing rules and abiding by them
 type Shuffler struct {
-	IncludedSets     map[SetName]bool
-	BlacklistedCards map[string]bool
-	MustIncludeCards []string
-	TypeRules        map[CardType]int
-	AllCards         []Card
-	CardReader       CardDataReader
-}
+	Sets        []SetName
+	Blacklist   []string
+	MustInclude []string
+	TypeRules   map[CardType]int
+	CardReader  CardDataReader
 
-func (s *Shuffler) BlacklistCards(cards ...string) {
-	if s.BlacklistedCards == nil {
-		s.BlacklistedCards = map[string]bool{}
-	}
-
-	for _, kc := range cards {
-		s.BlacklistedCards[kc] = true
-	}
-}
-
-func (s *Shuffler) UnblacklistCards(cards ...string) {
-	if s.BlacklistedCards == nil {
-		s.BlacklistedCards = map[string]bool{}
-	}
-
-	for _, kc := range cards {
-		s.BlacklistedCards[kc] = false
-	}
-}
-
-func (s *Shuffler) IncludeSets(k ...SetName) {
-	if s.IncludedSets == nil {
-		s.IncludedSets = map[SetName]bool{}
-	}
-
-	for _, kn := range k {
-		s.IncludedSets[kn] = true
-	}
-}
-
-func (s *Shuffler) ExcludeSets(k ...SetName) {
-	if s.IncludedSets == nil {
-		s.IncludedSets = map[SetName]bool{}
-	}
-
-	for _, kn := range k {
-		s.IncludedSets[kn] = false
-	}
-}
-
-func (s *Shuffler) AddMustIncludeCards(cards ...string) {
-	for _, c := range cards {
-		s.MustIncludeCards = append(s.MustIncludeCards, c)
-	}
+	allCards []Card
 }
 
 func (s *Shuffler) SetTypeRule(ct CardType, num int) {
@@ -63,34 +18,19 @@ func (s *Shuffler) SetTypeRule(ct CardType, num int) {
 	s.TypeRules[ct] = num
 }
 
-func excludeBlacklistCards(cards []Card, blackList []string) []Card {
-	var retCards []Card
-
-	for _, kc := range cards {
-		found := false
-		for _, blc := range blackList {
-			if blc == kc.Name {
-				found = true
-				break
-			}
-		}
-
-		if !found {
-			retCards = append(retCards, kc)
-		}
+func (s *Shuffler) getSetCards() []Card {
+	sets := map[SetName]bool{}
+	for _, s := range s.Sets {
+		sets[s] = true
 	}
 
-	return retCards
-}
-
-func (s *Shuffler) getSetCards() []Card {
-	if len(s.AllCards) == 0 {
-		s.AllCards = s.CardReader.ReadCards()
+	if len(s.allCards) == 0 {
+		s.allCards = s.CardReader.ReadCards()
 	}
 	retCards := []Card{}
 
-	for _, c := range s.AllCards {
-		if s.IncludedSets[c.Set] == true {
+	for _, c := range s.allCards {
+		if sets[c.Set] == true {
 			retCards = append(retCards, c)
 		}
 	}
@@ -103,12 +43,17 @@ func (s *Shuffler) RandomizeKingdom(numCards int) Kingdom {
 	k := Kingdom{}
 	setCards := shuffle(s.getSetCards())
 
+	blacklistMap := map[string]bool{}
+	for _, c := range s.Blacklist {
+		blacklistMap[c] = true
+	}
+
 	cardIndex := 0
 	for len(k.cards) < numCards && cardIndex < len(setCards) {
 		cardToConsider := setCards[cardIndex]
 		cardIndex++
 
-		if s.BlacklistedCards[cardToConsider.Name] == true {
+		if blacklistMap[cardToConsider.Name] == true {
 			continue
 		}
 
