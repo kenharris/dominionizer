@@ -7,10 +7,10 @@ import (
 )
 
 func Test_CardsEqualCost(t *testing.T) {
-	kc1 := dominionizer.KingdomCard{
+	kc1 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
-	kc2 := dominionizer.KingdomCard{
+	kc2 := dominionizer.Card{
 		Name: "Woodcutter",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
 
@@ -20,10 +20,10 @@ func Test_CardsEqualCost(t *testing.T) {
 }
 
 func Test_CardsEqualName(t *testing.T) {
-	kc1 := dominionizer.KingdomCard{
+	kc1 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
-	kc2 := dominionizer.KingdomCard{
+	kc2 := dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{Coins: 2, Potions: 3, Debt: 0}}
 

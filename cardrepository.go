@@ -9,8 +9,8 @@ import (
 
 type cardRepository struct {
 	random         *rand.Rand
-	cards          []KingdomCard
-	exhaustedCards []KingdomCard
+	cards          []Card
+	exhaustedCards []Card
 }
 
 type cardDataCardCost struct {
@@ -45,19 +45,19 @@ func (cdcc cardDataCardCost) ToRepo() CardCost {
 	return CardCost{Coins: cdcc.Coins, Potions: cdcc.Potions, Debt: cdcc.Debt}
 }
 
-func (cd cardData) ToRepo() []KingdomCard {
-	retCards := []KingdomCard{}
+func (cd cardData) ToRepo() []Card {
+	retCards := []Card{}
 	for _, cds := range cd.Sets {
 		currentKingdom := cds.Name
 
 		for _, cdc := range cds.Cards {
-			var kc KingdomCard
+			var c Card
 
-			kc.Name = cdc.Name
-			kc.Kingdom = currentKingdom
-			kc.Cost = cdc.Cost.ToRepo()
+			c.Name = cdc.Name
+			c.Set = currentKingdom
+			c.Cost = cdc.Cost.ToRepo()
 
-			retCards = append(retCards, kc)
+			retCards = append(retCards, c)
 		}
 	}
 	return retCards
@@ -79,28 +79,13 @@ func (repo *cardRepository) LoadCards() {
 	// json.Unmarshal(b, &cards)
 
 	repo.cards = cards.ToRepo()
-
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Cellar", Kingdom: Dominion, Cost: CardCost{Coins: 2}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Chapel", Kingdom: Dominion, Cost: CardCost{Coins: 2}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Moat", Kingdom: Dominion, Cost: CardCost{Coins: 2}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Village", Kingdom: Dominion, Cost: CardCost{Coins: 3}})
-
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Pawn", Kingdom: Intrigue, Cost: CardCost{Coins: 2}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Masquerade", Kingdom: Intrigue, Cost: CardCost{Coins: 3}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Shanty Town", Kingdom: Intrigue, Cost: CardCost{Coins: 3}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Bridge", Kingdom: Intrigue, Cost: CardCost{Coins: 4}})
-
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Loan", Kingdom: Prosperity, Cost: CardCost{Coins: 3}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Monument", Kingdom: Prosperity, Cost: CardCost{Coins: 4}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Mountebank", Kingdom: Prosperity, Cost: CardCost{Coins: 5}})
-	// repo.cards = append(repo.cards, KingdomCard{Name: "Rabble", Kingdom: Prosperity, Cost: CardCost{Coins: 5}})
 }
 
-func (repo cardRepository) getSetCards(includedKingdoms map[SetName]bool) []KingdomCard {
-	retCards := []KingdomCard{}
+func (repo cardRepository) getSetCards(includedSets map[SetName]bool) []Card {
+	retCards := []Card{}
 
 	for _, c := range repo.cards {
-		if includedKingdoms[c.Kingdom] == true {
+		if includedSets[c.Set] == true {
 			retCards = append(retCards, c)
 		}
 	}

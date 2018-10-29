@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func shuffle(cards []KingdomCard) []KingdomCard {
+func shuffle(cards []Card) []Card {
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	// We start at the end of the slice, inserting our random
 	// values one at a time.
@@ -25,21 +25,23 @@ func shuffle(cards []KingdomCard) []KingdomCard {
 	return retCards
 }
 
-func (kc KingdomCard) CompareCost(kc2 KingdomCard) int {
+// CompareCost compares two cards' costs
+func (kc Card) CompareCost(kc2 Card) int {
 	return kc.Cost.Compare(kc2.Cost)
 }
 
-func (kc KingdomCard) CompareName(kc2 KingdomCard) int {
+// CompareName compares two cards' names
+func (kc Card) CompareName(kc2 Card) int {
 	return strings.Compare(kc.Name, kc2.Name)
 }
 
-func (kc KingdomCard) String() string {
-	return fmt.Sprintf("Name: %s - Kingdom: %s - Cost: %s", kc.Name, kc.Kingdom, kc.Cost)
+func (kc Card) String() string {
+	return fmt.Sprintf("Name: %s - Set: %s - Cost: %s", kc.Name, kc.Set, kc.Cost)
 }
 
-// KingdomCard ...KingdomCard
-type KingdomCard struct {
-	Name    string
-	Cost    CardCost
-	Kingdom SetName
+// Card represents a card from a Dominion set.
+type Card struct {
+	Name string
+	Cost CardCost
+	Set  SetName
 }

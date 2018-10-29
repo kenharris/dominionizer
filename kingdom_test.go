@@ -9,25 +9,25 @@ import (
 func Test_KingdomSortedByCost(t *testing.T) {
 	kingdom := dominionizer.Kingdom{}
 
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{
 			Coins:   2,
 			Potions: 0,
 			Debt:    0}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "All Card",
 		Cost: dominionizer.CardCost{
 			Coins:   3,
 			Potions: 2,
 			Debt:    1}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Potion Card",
 		Cost: dominionizer.CardCost{
 			Coins:   0,
 			Potions: 2,
 			Debt:    0}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Debt Card",
 		Cost: dominionizer.CardCost{
 			Coins:   0,
@@ -50,25 +50,25 @@ func Test_KingdomSortedByCost(t *testing.T) {
 func Test_KingdomSortedByName(t *testing.T) {
 	kingdom := dominionizer.Kingdom{}
 
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Chapel",
 		Cost: dominionizer.CardCost{
 			Coins:   2,
 			Potions: 0,
 			Debt:    0}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "All Card",
 		Cost: dominionizer.CardCost{
 			Coins:   3,
 			Potions: 2,
 			Debt:    1}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Potion Card",
 		Cost: dominionizer.CardCost{
 			Coins:   0,
 			Potions: 2,
 			Debt:    0}})
-	kingdom.AddCard(dominionizer.KingdomCard{
+	kingdom.AddCard(dominionizer.Card{
 		Name: "Debt Card",
 		Cost: dominionizer.CardCost{
 			Coins:   0,

@@ -6,19 +6,22 @@ import (
 	"strings"
 )
 
-// Kingdom ...
+// Kingdom represents a collection of ten kingdom cards randomized based on rules
 type Kingdom struct {
-	cards []KingdomCard
+	cards []Card
 }
 
-func (k *Kingdom) AddCard(kc KingdomCard) {
-	k.cards = append(k.cards, kc)
+// AddCard adds a card to the current kingdom
+func (k *Kingdom) AddCard(c Card) {
+	k.cards = append(k.cards, c)
 }
 
-func (k *Kingdom) GetCards() []KingdomCard {
+// GetCards gets cards from the kingdom
+func (k *Kingdom) GetCards() []Card {
 	return k.cards
 }
 
+// SortByName sorts cards in kingdom by name
 func (k *Kingdom) SortByName() {
 	sort.Slice(k.cards, func(i, j int) bool {
 		left := k.cards[i]
@@ -28,6 +31,7 @@ func (k *Kingdom) SortByName() {
 	})
 }
 
+// SortByCost sorts cards in kingdom by cost
 func (k *Kingdom) SortByCost() {
 	sort.Slice(k.cards, func(i, j int) bool {
 		left := k.cards[i]

@@ -123,8 +123,8 @@ func (s *shuffler) AddMustIncludeCards(cards ...string) {
 	}
 }
 
-func excludeBlacklistCards(cards []KingdomCard, blackList []string) []KingdomCard {
-	var retCards []KingdomCard
+func excludeBlacklistCards(cards []Card, blackList []string) []Card {
+	var retCards []Card
 
 	for _, kc := range cards {
 		found := false
