@@ -52,19 +52,11 @@ func (cd cardData) ToRepo() []Card {
 		currentSet := cds.Name
 
 		for _, cdc := range cds.Cards {
-<<<<<<< HEAD
 			var c Card
 
 			c.Name = cdc.Name
-			c.Set = currentKingdom
+			c.Set = currentSet
 			c.Cost = cdc.Cost.ToRepo()
-=======
-			var kc Card
-
-			kc.Name = cdc.Name
-			kc.Set = currentSet
-			kc.Cost = cdc.Cost.ToRepo()
->>>>>>> eb3d01a75c8b0472dd656ea922ffaea7647c4be9
 
 			retCards = append(retCards, c)
 		}

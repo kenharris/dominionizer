@@ -11,19 +11,12 @@ type Kingdom struct {
 	cards []Card
 }
 
-<<<<<<< HEAD
 // AddCard adds a card to the current kingdom
 func (k *Kingdom) AddCard(c Card) {
 	k.cards = append(k.cards, c)
 }
 
 // GetCards gets cards from the kingdom
-=======
-func (k *Kingdom) AddCard(kc Card) {
-	k.cards = append(k.cards, kc)
-}
-
->>>>>>> eb3d01a75c8b0472dd656ea922ffaea7647c4be9
 func (k *Kingdom) GetCards() []Card {
 	return k.cards
 }

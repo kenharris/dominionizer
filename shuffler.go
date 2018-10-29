@@ -51,13 +51,10 @@ func (s *shuffler) AddMustIncludeCards(cards ...string) {
 	}
 }
 
-<<<<<<< HEAD
-=======
 func (s *shuffler) SetTypeRule(ct CardType, num int) {
 	s.Options.TypeRules[ct] = num
 }
 
->>>>>>> eb3d01a75c8b0472dd656ea922ffaea7647c4be9
 func excludeBlacklistCards(cards []Card, blackList []string) []Card {
 	var retCards []Card
 
