@@ -38,6 +38,9 @@
 				"types": [
 					"action"
 				],
+				"categories": [
+					"cantrip"
+				],
 				"cost": {
 					"coins": 3
 				},
@@ -47,6 +50,9 @@
 				"name": "Merchant",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"cantrip"
 				],
 				"cost": {
 					"coins": 3
@@ -58,6 +64,9 @@
 				"types": [
 					"action"
 				],
+				"categories": [
+					"cantrip"
+				],
 				"cost": {
 					"coins": 3
 				},
@@ -67,6 +76,9 @@
 				"name": "Village",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"village"
 				],
 				"cost": {
 					"coins": 3
@@ -120,7 +132,7 @@
 				"types": [
 					"action"
 				],
-				"meta": [
+				"categories": [
 					"trasher"
 				],
 				"cost": {
@@ -133,6 +145,9 @@
 				"types": [
 					"action"
 				],
+				"categories": [
+					"cantrip"
+				],
 				"cost": {
 					"coins": 4
 				},
@@ -143,7 +158,7 @@
 				"types": [
 					"action"
 				],
-				"meta": [
+				"categories": [
 					"trasher"
 				],
 				"cost": {
@@ -247,6 +262,9 @@
 				"types": [
 					"action"
 				],
+				"categories": [
+					"cantrip"
+				],
 				"cost": {
 					"coins": 5
 				},
@@ -331,7 +349,7 @@
 				"types": [
 					"action"
                 ],
-                "meta": [
+                "categories": [
                     "trasher"
                 ],
 				"cost": {
@@ -354,6 +372,9 @@
 				"name": "Wishing Well",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"cantrip"
 				],
 				"cost": {
 					"coins": 3
@@ -384,6 +405,9 @@
 				"name": "Conspirator",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"cantrip"
 				],
 				"cost": {
 					"coins": 4
@@ -435,6 +459,10 @@
 				"name": "Mining Village",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"village",
+					"cantrip"
 				],
 				"cost": {
 					"coins": 4
@@ -546,6 +574,9 @@
 				"name": "Upgrade",
 				"types": [
 					"action"
+				],
+				"categories": [
+					"cantrip"
 				],
 				"cost": {
 					"coins": 5

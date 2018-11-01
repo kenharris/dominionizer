@@ -66,12 +66,33 @@ func (cd cardData) ToRepo() []dominionizer.Card {
 			c.Set = dominionizer.SetNameFromString(currentSet)
 			c.Cost = cdc.Cost.ToRepo()
 
+			if len(cdc.Types) > 0 {
+				c.Types = []dominionizer.CardType{}
+				for _, ct := range cdc.Types {
+					ctt := dominionizer.CardTypeFromString(ct)
+					if ctt != dominionizer.CardTypeUnknown {
+						c.Types = append(c.Types, ctt)
+					}
+				}
+			}
+
+			if len(cdc.Categories) > 0 {
+				c.Categories = []dominionizer.CardCategory{}
+				for _, ct := range cdc.Categories {
+					ctt := dominionizer.CardCategoryFromString(ct)
+					if ctt != dominionizer.CardCategoryUnknown {
+						c.Categories = append(c.Categories, ctt)
+					}
+				}
+			}
+
 			retCards = append(retCards, c)
 		}
 	}
 	return retCards
 }
 
+// ReadCards is a function defined to read cards from data source.
 func (cr CardReader) ReadCards() []dominionizer.Card {
 	var cards cardData
 	file, err := os.Open(cr.FileName)

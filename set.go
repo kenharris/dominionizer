@@ -37,7 +37,7 @@ var SetNames = []SetName{
 	SetRenaissance,
 }
 
-var stringNames = []string{
+var stringSetNames = []string{
 	"Dominion",
 	"Intrigue",
 	"Seaside",
@@ -58,12 +58,12 @@ func (k SetName) String() string {
 		return "Unknown"
 	}
 
-	return stringNames[k]
+	return stringSetNames[k]
 }
 
 // SetNameFromString takes a string value and converts it to appropriate SetName constant
 func SetNameFromString(s string) SetName {
-	for i, sn := range stringNames {
+	for i, sn := range stringSetNames {
 		if sn == s {
 			return SetNames[i]
 		}
