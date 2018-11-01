@@ -5,36 +5,36 @@ type SetName int
 
 // Constant enumeration of set names
 const (
-	Dominion SetName = iota
-	Intrigue
-	Seaside
-	Alchemy
-	Prosperity
-	Cornucopia
-	Hinterlands
-	DarkAges
-	Guilds
-	Adventures
-	Empires
-	Nocturne
-	Renaissance
+	SetDominion SetName = iota
+	SetIntrigue
+	SetSeaside
+	SetAlchemy
+	SetProsperity
+	SetCornucopia
+	SetHinterlands
+	SetDarkAges
+	SetGuilds
+	SetAdventures
+	SetEmpires
+	SetNocturne
+	SetRenaissance
 )
 
 // SetNames is a slice of SetName type for iteration/validation
 var SetNames = []SetName{
-	Dominion,
-	Intrigue,
-	Seaside,
-	Alchemy,
-	Prosperity,
-	Cornucopia,
-	Hinterlands,
-	DarkAges,
-	Guilds,
-	Adventures,
-	Empires,
-	Nocturne,
-	Renaissance,
+	SetDominion,
+	SetIntrigue,
+	SetSeaside,
+	SetAlchemy,
+	SetProsperity,
+	SetCornucopia,
+	SetHinterlands,
+	SetDarkAges,
+	SetGuilds,
+	SetAdventures,
+	SetEmpires,
+	SetNocturne,
+	SetRenaissance,
 }
 
 var stringNames = []string{
@@ -54,7 +54,7 @@ var stringNames = []string{
 }
 
 func (k SetName) String() string {
-	if k < Dominion || k > Renaissance {
+	if k < SetDominion || k > SetRenaissance {
 		return "Unknown"
 	}
 
@@ -69,5 +69,5 @@ func SetNameFromString(s string) SetName {
 		}
 	}
 
-	return Dominion
+	return SetDominion
 }
