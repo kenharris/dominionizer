@@ -1,5 +1,6 @@
 {
-	"Sets": [{
+	"Sets": [
+		{
 		"Name": "Dominion",
 		"Cards": [{
 				"name": "Cellar",
@@ -294,7 +295,8 @@
 		]
 	},{
 		"Name": "Intrigue",
-		"Cards": [{
+		"Cards": [
+			{
 				"name": "Courtyard",
 				"types": [
 					"action"
@@ -614,5 +616,346 @@
                 }
             }
         ]
-	}]
+		},{
+			"Name": "Seaside",
+			"Cards": [
+				{
+					"name": "Embargo",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 2
+					},
+					"cardText": {
+						"aboveLine": "+$2\nTrash this. Add an Embargo token to a Supply pile. (For the rest of the game, when a player buys a card from that pile, they gain a Curse.)"
+					}
+				},
+				{
+					"name": "Haven",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 2
+					},
+					"cardText": {
+						"aboveLine": "+1 Card\n+1 Action\nSet aside a card from your hand face down (under this). At the start of your next turn, put it into your hand."
+					}
+				},
+				{
+					"name": "Lighthouse",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 2
+					},
+					"cardText": {
+						"aboveLine": "+1 Action\nNow and at the start of your next turn: +$1.",
+						"belowLine": "While this is in play, when another player plays an Attack card, it doesn’t affect you."
+					}
+				},
+				{
+					"name": "Native Village",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 2
+					},
+					"cardText": {
+						"aboveLine": "+2 Actions\nChoose one: Put the top card of your deck face down on your Native Village mat (you may look at those cards at any time); or put all the cards from your mat into your hand."
+					}
+				},
+				{
+					"name": "Pearl Diver",
+					"types": [
+						"action"
+					],
+					"categories": [
+						"cantrip"
+					],
+					"cost": {
+						"coins": 2
+					},
+					"cardText": {
+						"aboveLine": "+1 Card\n+1 Action\nLook at the bottom card of your deck. You may put it on top."
+					}
+				},
+				{
+					"name": "Ambassador",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 3
+					},
+					"cardText": {
+						"aboveLine": "Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it."
+					}
+				},
+				{
+					"name": "Fishing Village",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 3
+					},
+					"cardText": {
+						"aboveLine": "+2 Actions\n+$1\nAt the start of your next turn: +1 Action and +$1."
+					}
+				},
+				{
+					"name": "Lookout",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 3
+					},
+					"cardText": {
+						"aboveLine": "+1 Action\nLook at the top 3 cards of your deck. Trash one of them. Discard one of them. Put the other one back on to your deck."
+					}
+				},
+				{
+					"name": "Smugglers",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 3
+					},
+					"cardText": {
+						"aboveLine": "Gain a copy of a card costing up to $6 that the player to your right gained on their last turn."
+					}
+				},
+				{
+					"name": "Warehouse",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 3
+					},
+					"cardText": {
+						"aboveLine": "+3 Cards\n+1 Action\nDiscard 3 cards."
+					}
+				},
+				{
+					"name": "Caravan",
+					"types": [
+						"action",
+						"duration"
+					],
+					"categories": [
+						"cantrip"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "+1 Card\n+1 Action\nAt the start of your next turn, +1 Card."
+					}
+				},
+				{
+					"name": "Cutpurse",
+					"types": [
+						"action",
+						"attack"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "+$2\nEach other player discards a Copper (or reveals a hand with no Copper)."
+					}
+				},
+				{
+					"name": "Island",
+					"types": [
+						"action",
+						"victory"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "Put this and a card from your hand onto your Island mat.",
+						"belowLine": "2 Victory Points"
+					}
+				},
+				{
+					"name": "Navigator",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "+$2\nLook at the top 5 cards of your deck. Either discard them all, or put them back in any order."
+					}
+				},
+				{
+					"name": "Pirate Ship",
+					"types": [
+						"action",
+						"attack"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "Choose one: +$1 per Coin token on your Pirate Ship mat; or each other player reveals the top 2 cards of their deck, trashes one of those Treasures that you choose, and discards the rest, and then if anyone trashed a Treasure you add a Coin token to your Pirate Ship mat."
+					}
+				},
+				{
+					"name": "Salvager",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "+1 Buy\nTrash a card from your hand. +$1 per $1 it costs."
+					}
+				},
+				{
+					"name": "Sea Hag",
+					"types": [
+						"action",
+						"attack"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "Each other player discards the top card of their deck, then gains a Curse onto their deck."
+					}
+				},
+				{
+					"name": "Treasure Map",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 4
+					},
+					"cardText": {
+						"aboveLine": "Each other player discards the top card of their deck, then gains a Curse onto their deck."
+					}
+				},
+				{
+					"name": "Bazaar",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "+1 Card\n+2 Actions\n+$1."
+					}
+				},
+				{
+					"name": "Explorer",
+					"types": [
+						"action"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "You may reveal a Province from your hand. If you do, gain a Gold to your hand. If you don’t, gain a Silver to your hand."
+					}
+				},
+				{
+					"name": "Ghost Ship",
+					"types": [
+						"action",
+						"attack"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "+2 Cards\nEach other player with 4 or more cards in hand puts cards from their hand onto their deck until they have 3 cards in hand."
+					}
+				},
+				{
+					"name": "Merchant Ship",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "Now and at the start of your next turn: +$2."
+					}
+				},
+				{
+					"name": "Outpost",
+					"types": [
+						"action",
+						"attack"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "If this is the first time you played an Outpost this turn, and the previous turn wasn’t yours, then take an extra turn after this one, and you only draw 3 cards for your next hand."
+					}
+				},
+				{
+					"name": "Tactician",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "If you have at least one card in hand, discard your hand, and at the start of your next turn, +5 Cards, +1 Action, and +1 Buy."
+					}
+				},
+				{
+					"name": "Treasury",
+					"types": [
+						"action"
+					],
+					"categories": [
+						"cantrip"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "+1 Card\n+1 Action\n+$1\nWhen you discard this from play, if you didn’t buy a Victory card this turn, you may put this onto your deck."
+					}
+				},
+				{
+					"name": "Wharf",
+					"types": [
+						"action",
+						"duration"
+					],
+					"cost": {
+						"coins": 5
+					},
+					"cardText": {
+						"aboveLine": "Now and at the start of your next turn: +2 Cards and +1 Buy."
+					}
+				}
+			]
+		}
+	]
 }
