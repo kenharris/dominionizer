@@ -8,8 +8,9 @@ import (
 )
 
 func main() {
-	dominionizer.CardReader = json.CardReader{FileName: "../json/cards.json"}
-	dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetIntrigue, dominionizer.SetSeaside}
+	dominionizer.CardReader = json.CardReader{FilePath: "../json"}
+	// dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetIntrigue, dominionizer.SetSeaside}
+	dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetAlchemy}
 	dominionizer.Blacklist = []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"}
 
 	kingdom := dominionizer.RandomizeKingdom(10)

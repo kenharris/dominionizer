@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Randominion</title>
+        <style type="text/css">
+           .card {
+               float: left;
+               width: 17%;
+               border: solid thin black;
+               margin-right: 10px;
+               margin-bottom: 10px;
+               padding: 10px;
+
+               min-height: 200px;
+           }
+
+           .card h2 {
+               margin-bottom: 5px;
+           }           
+        </style>
+    </head>
+    <body>
+        <form method="post">
+            <h1>Kingdom - {{ .Count }} <button>Randomize!</button></h1>
+            <input type="hidden" name="count" value="{{ .NextNum }}" />            
+            {{ range $index, $card := .Cards }}
+                <div class="card">
+                    <h2>{{ $card.Name }}</h2>
+                    <em>{{ $card.Set }}</em><br />
+                    <strong>{{ $card.Cost }}</strong>
+                    {{ if $card.Types }}
+                    <p>Types: {{ $card.Types }}</p>
+                    {{ end }}
+                    {{ if $card.Categories }}
+                    <p>Categories: {{ $card.Categories }}</p>
+                    {{ end }}
+
+                    {{ $card.Description }}
+                </div>
+            {{ end }}
+        </form>
+    </body>
+</html>

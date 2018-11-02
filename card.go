@@ -14,6 +14,16 @@ type Card struct {
 	Set        SetName
 	Types      []CardType
 	Categories []CardCategory
+	TopText    string
+	BottomText string
+}
+
+// TextToHTML formats card text to HTML-friendly output.
+func (c Card) TextToHTML() string {
+	t := strings.Replace(c.TopText, "\n", "<br />", -1)
+	b := strings.Replace(c.BottomText, "\n", "<br />", -1)
+
+	return fmt.Sprintf("%s\n<hr />\n%s", t, b)
 }
 
 func shuffle(cards []Card) []Card {

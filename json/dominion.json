@@ -1,0 +1,347 @@
+{	
+	"Name": "Dominion",
+	"Cards": [{
+			"name": "Cellar",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 2
+			},
+			"cardText": {
+				"aboveLine": "+1 Action\nDiscard any number of cards, then draw that many."
+			}
+		},
+		{
+			"name": "Chapel",
+			"types": [
+				"action",
+				"trasher"
+			],
+			"cost": {
+				"coins": 2
+			},
+			"cardText": {
+				"aboveLine": "+1 Action\nDiscard any number of cards, then draw that many."
+			}
+		},
+		{
+			"name": "Moat",
+			"types": [
+				"action",
+				"reaction"
+			],
+			"cost": {
+				"coins": 2
+			},
+			"cardText": {
+				"aboveLine": "+2 Cards",
+				"beloLine": "When another player plays an Attack card, you may first reveal this from your hand, to be unaffected by it."
+			}
+		},
+		{
+			"name": "Harbringer",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"cantrip"
+			],
+			"cost": {
+				"coins": 3
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+1 Action\nLook through your discard pile. You may put a card from it onto your deck."
+			}
+		},
+		{
+			"name": "Merchant",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"cantrip"
+			],
+			"cost": {
+				"coins": 3
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+1 Action\nThe first time you play a Silver this turn, +$1."
+			}
+		},
+		{
+			"name": "Vassal",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"cantrip"
+			],
+			"cost": {
+				"coins": 3
+			},
+			"cardText": {
+				"aboveLine": "Discard the top card of your deck. If it’s an Action card, you may play it."
+			}
+		},
+		{
+			"name": "Village",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"village"
+			],
+			"cost": {
+				"coins": 3
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+2 Actions."
+			}
+		},
+		{
+			"name": "Workshop",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 3
+			},
+			"cardText": {
+				"aboveLine": "Gain a card costing up to $4."
+			}
+		},
+		{
+			"name": "Bureaucrat",
+			"types": [
+				"action",
+				"attack"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards)."
+			}
+		},
+		{
+			"name": "Gardens",
+			"types": [
+				"victory"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "Worth 1 Victory for every 10 cards in your deck (rounded down)."
+			}
+		},
+		{
+			"name": "Militia",
+			"types": [
+				"action",
+				"attack"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "+$2\nEach other player discards down to 3 cards in their hand."
+			}
+		},
+		{
+			"name": "Moneylender",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"trasher"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "You may trash a Copper from your hand. If you do, +$3."
+			}
+		},
+		{
+			"name": "Poacher",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"cantrip"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+1 Action\n+$1\nDiscard a card per empty Supply pile."
+			}
+		},
+		{
+			"name": "Remodel",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"trasher"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "Trash a card from your hand. Gain a card costing up to $2 more than the trashed card."
+			}
+		},
+		{
+			"name": "Smithy",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "+3 Cards."
+			}
+		},
+		{
+			"name": "Throne Room",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 4
+			},
+			"cardText": {
+				"aboveLine": "You may play an Action card from your hand twice."
+			}
+		},
+		{
+			"name": "Bandit",
+			"types": [
+				"action",
+				"attack"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "Gain a Gold. Each other player reveals the top two cards of their deck, trashes a revealed Treasure other than Copper, and discards the rest."
+			}
+		},
+		{
+			"name": "Council Room",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "+4 Cards\n+1 Buy\nEach other player draws a card."
+			}
+		},
+		{
+			"name": "Festival",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "Discard the top card of your deck. If it’s an Action card, you may play it."
+			}
+		},
+		{
+			"name": "Laboratory",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "+2 Cards\n+1 Action."
+			}
+		},
+		{
+			"name": "Library",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "Draw until you have 7 cards in hand, skipping any Action cards you choose to; set those aside, discarding them afterwards."
+			}
+		},
+		{
+			"name": "Market",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+1 Action\n+1 Buy\n+$1."
+			}
+		},
+		{
+			"name": "Mine",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it."
+			}
+		},
+		{
+			"name": "Sentry",
+			"types": [
+				"action"
+			],
+			"categories": [
+				"cantrip"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "+1 Card\n+1 Action\nLook at the top 2 cards of your deck. Trash and/or discard any number of them. Put the rest back on top in any order."
+			}
+		},
+		{
+			"name": "Witch",
+			"types": [
+				"action",
+				"attack"
+			],
+			"cost": {
+				"coins": 5
+			},
+			"cardText": {
+				"aboveLine": "+2 Cards\nEach other player gains a Curse card."
+			}
+		},
+		{
+			"name": "Artisan",
+			"types": [
+				"action"
+			],
+			"cost": {
+				"coins": 6
+			},
+			"cardText": {
+				"aboveLine": "Gain a card to your hand costing up to $5. Put a card from your hand onto your deck."
+			}
+		}
+	]
+}

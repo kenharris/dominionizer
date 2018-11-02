@@ -3,8 +3,10 @@ package json
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"math/rand"
 	"os"
+	"path/filepath"
 
 	"github.com/kenharris/dominionizer"
 )
@@ -12,7 +14,7 @@ import (
 // CardReader is a JSON-backed mechanism for reading card data
 type CardReader struct {
 	dominionizer.CardDataReader
-	FileName string
+	FilePath string
 }
 
 type cardRepository struct {
@@ -46,61 +48,76 @@ type cardDataSet struct {
 	Cards []cardDataCard
 }
 
-type cardData struct {
-	Sets []cardDataSet
-}
-
 func (cdcc cardDataCardCost) ToRepo() dominionizer.CardCost {
 	return dominionizer.CardCost{Coins: cdcc.Coins, Potions: cdcc.Potions, Debt: cdcc.Debt}
 }
 
-func (cd cardData) ToRepo() []dominionizer.Card {
+func (cds cardDataSet) ToRepo() []dominionizer.Card {
 	retCards := []dominionizer.Card{}
-	for _, cds := range cd.Sets {
-		currentSet := cds.Name
+	currentSet := cds.Name
 
-		for _, cdc := range cds.Cards {
-			var c dominionizer.Card
+	for _, cdc := range cds.Cards {
+		var c dominionizer.Card
 
-			c.Name = cdc.Name
-			c.Set = dominionizer.SetNameFromString(currentSet)
-			c.Cost = cdc.Cost.ToRepo()
+		c.Name = cdc.Name
+		c.Set = dominionizer.SetNameFromString(currentSet)
+		c.Cost = cdc.Cost.ToRepo()
+		c.TopText = cdc.CardText.AboveLine
+		c.BottomText = cdc.CardText.BelowLine
 
-			if len(cdc.Types) > 0 {
-				c.Types = []dominionizer.CardType{}
-				for _, ct := range cdc.Types {
-					ctt := dominionizer.CardTypeFromString(ct)
-					if ctt != dominionizer.CardTypeUnknown {
-						c.Types = append(c.Types, ctt)
-					}
+		if len(cdc.Types) > 0 {
+			c.Types = []dominionizer.CardType{}
+			for _, ct := range cdc.Types {
+				ctt := dominionizer.CardTypeFromString(ct)
+				if ctt != dominionizer.CardTypeUnknown {
+					c.Types = append(c.Types, ctt)
 				}
 			}
-
-			if len(cdc.Categories) > 0 {
-				c.Categories = []dominionizer.CardCategory{}
-				for _, ct := range cdc.Categories {
-					ctt := dominionizer.CardCategoryFromString(ct)
-					if ctt != dominionizer.CardCategoryUnknown {
-						c.Categories = append(c.Categories, ctt)
-					}
-				}
-			}
-
-			retCards = append(retCards, c)
 		}
+
+		if len(cdc.Categories) > 0 {
+			c.Categories = []dominionizer.CardCategory{}
+			for _, ct := range cdc.Categories {
+				ctt := dominionizer.CardCategoryFromString(ct)
+				if ctt != dominionizer.CardCategoryUnknown {
+					c.Categories = append(c.Categories, ctt)
+				}
+			}
+		}
+
+		retCards = append(retCards, c)
 	}
 	return retCards
 }
 
 // ReadCards is a function defined to read cards from data source.
 func (cr CardReader) ReadCards() []dominionizer.Card {
-	var cards cardData
-	file, err := os.Open(cr.FileName)
+	cards := []dominionizer.Card{}
+
+	files, err := ioutil.ReadDir(cr.FilePath)
 	if err != nil {
-		fmt.Printf("Error loading cards from file: %v", err)
+		fmt.Printf("Error loading files in directory: %v", err)
 		os.Exit(1)
 	}
-	json.NewDecoder(file).Decode(&cards)
 
-	return cards.ToRepo()
+	for _, fi := range files {
+		if fi.IsDir() || filepath.Ext(fi.Name()) != ".json" {
+			continue
+		}
+
+		file, err := os.Open(fmt.Sprintf("%s/%s", cr.FilePath, fi.Name()))
+		if err != nil {
+			fmt.Printf("Error loading cards from file: %v", err)
+			os.Exit(1)
+		}
+
+		var set cardDataSet
+		json.NewDecoder(file).Decode(&set)
+
+		for _, card := range set.ToRepo() {
+			cards = append(cards, card)
+		}
+	}
+
+	return cards
 }
