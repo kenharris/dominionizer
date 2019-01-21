@@ -1,5 +1,10 @@
 package dominionizer
 
+import (
+	"encoding/json"
+	"strings"
+)
+
 // SetName is a type representing name of kingdoms
 type SetName int
 
@@ -51,6 +56,16 @@ var stringSetNames = []string{
 	"Empires",
 	"Nocturne",
 	"Renaissance",
+}
+
+func (o *SetName) UnmarshalJSON(b []byte) error {
+	str := strings.Trim(string(b), `"`)
+	*o = SetNameFromString(str)
+	return nil
+}
+
+func (ct SetName) MarshalJSON() ([]byte, error) {
+	return json.Marshal(ct.String())
 }
 
 func (k SetName) String() string {

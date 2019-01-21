@@ -26,14 +26,6 @@ func init() {
 	allCards = []Card{}
 }
 
-// SetTypeRule allows for a card type rule to be set for a minimum number of cards to be included in randomization.
-func SetTypeRule(ct CardType, num int) {
-	if TypeRules == nil {
-		TypeRules = map[CardType]int{}
-	}
-	TypeRules[ct] = num
-}
-
 func getSetCards() []Card {
 	sets := map[SetName]bool{}
 	for _, s := range Sets {

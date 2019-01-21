@@ -1,6 +1,7 @@
 package dominionizer
 
 import (
+	"encoding/json"
 	"regexp"
 	"strings"
 )
@@ -59,6 +60,16 @@ var stringCardCategories = []string{
 	"Trasher",
 	"Village",
 	"Village with Conditions",
+}
+
+func (o *CardCategory) UnmarshalJSON(b []byte) error {
+	str := strings.Trim(string(b), `"`)
+	*o = CardCategoryFromString(str)
+	return nil
+}
+
+func (ct CardCategory) MarshalJSON() ([]byte, error) {
+	return json.Marshal(ct.String())
 }
 
 func (cat CardCategory) String() string {

@@ -36,15 +36,15 @@ type cardDataCardText struct {
 
 type cardDataCard struct {
 	Name        string
-	Types       []string
-	Categories  []string
+	Types       []dominionizer.CardType
+	Categories  []dominionizer.CardCategory
 	Cost        cardDataCardCost
 	Description string
 	CardText    cardDataCardText
 }
 
 type cardDataSet struct {
-	Name  string
+	Name  dominionizer.SetName
 	Cards []cardDataCard
 }
 
@@ -54,13 +54,12 @@ func (cdcc cardDataCardCost) ToRepo() dominionizer.CardCost {
 
 func (cds cardDataSet) ToRepo() []dominionizer.Card {
 	retCards := []dominionizer.Card{}
-	currentSet := cds.Name
 
 	for _, cdc := range cds.Cards {
 		var c dominionizer.Card
 
 		c.Name = cdc.Name
-		c.Set = dominionizer.SetNameFromString(currentSet)
+		c.Set = cds.Name
 		c.Cost = cdc.Cost.ToRepo()
 		c.TopText = cdc.CardText.AboveLine
 		c.BottomText = cdc.CardText.BelowLine
@@ -68,9 +67,8 @@ func (cds cardDataSet) ToRepo() []dominionizer.Card {
 		if len(cdc.Types) > 0 {
 			c.Types = []dominionizer.CardType{}
 			for _, ct := range cdc.Types {
-				ctt := dominionizer.CardTypeFromString(ct)
-				if ctt != dominionizer.CardTypeUnknown {
-					c.Types = append(c.Types, ctt)
+				if ct != dominionizer.CardTypeUnknown {
+					c.Types = append(c.Types, ct)
 				}
 			}
 		}
@@ -78,9 +76,8 @@ func (cds cardDataSet) ToRepo() []dominionizer.Card {
 		if len(cdc.Categories) > 0 {
 			c.Categories = []dominionizer.CardCategory{}
 			for _, ct := range cdc.Categories {
-				ctt := dominionizer.CardCategoryFromString(ct)
-				if ctt != dominionizer.CardCategoryUnknown {
-					c.Categories = append(c.Categories, ctt)
+				if ct != dominionizer.CardCategoryUnknown {
+					c.Categories = append(c.Categories, ct)
 				}
 			}
 		}

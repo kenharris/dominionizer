@@ -11,6 +11,37 @@
                padding: 10px;
 
                min-height: 200px;
+               height: 400px;
+
+               position: relative;
+           }
+
+           .card .top-area .card-name {
+               text-align: center;
+           }
+
+           .card .bottom-area {
+               width: 100%;
+               position: absolute;
+               bottom: 5px;                          
+           }
+
+           .card .bottom-area .card-cost {
+               display: inline-block;
+               width: 25%;
+           }
+
+           .card .bottom-area .card-cost .coins {
+               background: yellow;
+               padding: 5px 10px;
+               border: solid thin black;
+               border-radius: 15px;
+           }           
+
+           .card .bottom-area .card-types {
+               display: inline-block;
+               width: 50%;
+               text-align: center;
            }
 
            .card h2 {
@@ -24,12 +55,23 @@
             <input type="hidden" name="count" value="{{ .NextNum }}" />            
             {{ range $index, $card := .Cards }}
                 <div class="card">
-                    <h2>{{ $card.Name }}</h2>
+                    <div class="top-area">
+                        <h2 class="card-name">{{ $card.Name }}</h2>
+                    </div>
+
                     <em>{{ $card.Set }}</em><br />
-                    <strong>{{ $card.Cost }}</strong>
-                    {{ if $card.Types }}
-                    <p>Types: {{ $card.Types }}</p>
-                    {{ end }}
+
+                    <div class="bottom-area">
+                        <div class="card-cost">
+                            {{ if $card.Coins }}<span class="coins">{{ $card.Coins }}</span>{{ end }}
+                            {{ if $card.Potions }}<span class="potions">{{ $card.Potions }}P</span>{{ end }}
+                            {{ if $card.Debt }}<span class="debt">{{ $card.Debt }}D</span>{{ end }}
+                        </div>
+                        {{ if $card.Types }}
+                        <div class="card-types">{{ $card.Types }}</div>
+                        {{ end }}
+                    </div>
+                    
                     {{ if $card.Categories }}
                     <p>Categories: {{ $card.Categories }}</p>
                     {{ end }}
