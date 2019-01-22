@@ -9,6 +9,7 @@ import (
 
 	"github.com/kenharris/dominionizer"
 	"github.com/kenharris/dominionizer/json"
+	jsonState "github.com/kenharris/dominionizer/web/state/json"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,6 +25,12 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	fmt.Printf("Count: %d\n", count)
+
+	sm := jsonState.NewStateManager("test")
+	s := sm.ReadState()
+	fmt.Printf("State blacklist: %v\n", s.Blacklist)
+	s.Blacklist = append(s.Blacklist, "Chapel")
+	sm.WriteState(s)
 
 	dominionizer.CardReader = json.CardReader{FilePath: "../json"}
 	dominionizer.Sets = []dominionizer.SetName{
