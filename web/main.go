@@ -26,7 +26,21 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Count: %d\n", count)
 
 	dominionizer.CardReader = json.CardReader{FilePath: "../json"}
-	dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetAlchemy}
+	dominionizer.Sets = []dominionizer.SetName{
+		dominionizer.SetDominion,
+		dominionizer.SetAlchemy,
+		dominionizer.SetIntrigue,
+		dominionizer.SetSeaside,
+		dominionizer.SetProsperity,
+		dominionizer.SetCornucopia,
+		dominionizer.SetHinterlands,
+		dominionizer.SetDarkAges,
+		dominionizer.SetGuilds,
+		dominionizer.SetAdventures,
+		dominionizer.SetEmpires,
+		dominionizer.SetNocturne,
+		dominionizer.SetRenaissance,
+	}
 	dominionizer.Blacklist = []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"}
 
 	kingdom := dominionizer.RandomizeKingdom(10)

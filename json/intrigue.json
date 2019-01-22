@@ -9,7 +9,10 @@
 			"cost": {
 				"coins": 2
 			},
-			"description": "+3 Cards\nPut a card from your hand onto your deck."
+			"cardText": {
+				"aboveLine": "+3 Cards\nPut a card from your hand onto your deck.",
+				"belowLine": "When another player plays an Attack card, you may reveal this from a hand of 5 or more cards, to draw 2 cards then discard 3."
+			}
 		},
 		{
 			"name": "Lurker",
@@ -19,7 +22,9 @@
 			"cost": {
 				"coins": 2
 			},
-			"description": "+1 Action\nChoose one: Trash an Action card from the Supply; or gain an Action card from the trash."
+			"cardText": {
+				"aboveLine": "+1 Action\nChoose one: Trash an Action card from the Supply; or gain an Action card from the trash."
+			}
 		},
 		{
 			"name": "Pawn",
@@ -29,7 +34,9 @@
 			"cost": {
 				"coins": 2
 			},
-			"description": "Choose two: +1 Card; +1 Action; +1 Buy; +$1. The choices must be different."
+			"cardText": {
+				"aboveLine": "Choose two: +1 Card; +1 Action; +1 Buy; +$1. The choices must be different."
+			}
 		},
 		{
 			"name": "Masquerade",
@@ -39,7 +46,9 @@
 			"cost": {
 				"coins": 3
 			},
-			"description": "+2 Cards\nEach player with any cards in hand passes one to the next such player to their left, at once. Then you may trash a card from your hand."
+			"cardText": {
+				"aboveLine": "+2 Cards\nEach player with any cards in hand passes one to the next such player to their left, at once. Then you may trash a card from your hand."
+			}
 		},
 		{
 			"name": "Shanty Town",
@@ -49,7 +58,9 @@
 			"cost": {
 				"coins": 3
 			},
-			"description": "+2 Actions\nReveal your hand. If you have no Action cards in hand, +2 Cards."
+			"cardText": {
+				"aboveLine": "+2 Actions\nReveal your hand. If you have no Action cards in hand, +2 Cards."
+			}
 		},
 		{
 			"name": "Steward",
@@ -62,7 +73,9 @@
 			"cost": {
 				"coins": 3
 			},
-			"description": "Choose one: +2 Cards; or +$2; or trash 2 cards from your hand."
+			"cardText": {
+				"aboveLine": "Choose one: +2 Cards; or +$2; or trash 2 cards from your hand."
+			}
 		},
 		{
 			"name": "Swindler",
@@ -73,7 +86,9 @@
 			"cost": {
 				"coins": 3
 			},
-			"description": "+$2\nEach other player trashes the top card of their deck and gains a card with the same cost that you choose."
+			"cardText": {
+				"aboveLine": "+$2\nEach other player trashes the top card of their deck and gains a card with the same cost that you choose."
+			}
 		},
 		{
 			"name": "Wishing Well",
@@ -86,7 +101,9 @@
 			"cost": {
 				"coins": 3
 			},
-			"description": "+1 Card; +1 Action\nName a card, then reveal the top card of your deck. If you name it, put it in your hand."
+			"cardText": {
+				"aboveLine": "+1 Card; +1 Action\nName a card, then reveal the top card of your deck. If you name it, put it in your hand."
+			}
 		},
 		{
 			"name": "Baron",
@@ -96,7 +113,9 @@
 			"cost": {
 				"coins": 4
 			},
-			"description": "+1 Buy\nYou may discard an Estate for +$4. If you don’t gain an Estate."
+			"cardText": {
+				"aboveLine": "+1 Buy\nYou may discard an Estate for +$4. If you don’t gain an Estate."
+			}
 		},
 		{
 			"name": "Bridge",
@@ -106,7 +125,9 @@
 			"cost": {
 				"coins": 4
 			},
-			"description": "+1 Buy\n+$1\nThis turn, cards (everywhere) cost $1 less, but not less than $0."
+			"cardText": {
+				"aboveLine": "+1 Buy\n+$1\nThis turn, cards (everywhere) cost $1 less, but not less than $0."
+			}
 		},
 		{
 			"name": "Conspirator",
@@ -119,7 +140,9 @@
 			"cost": {
 				"coins": 4
 			},
-			"description": "+$2\nIf you’ve played 3 or more Actions this turn (counting this), +1 Card and +1 Action."
+			"cardText": {
+				"aboveLine": "+$2\nIf you’ve played 3 or more Actions this turn (counting this), +1 Card and +1 Action."
+			}
 		},
 		{
 			"name": "Diplomat",
@@ -130,7 +153,6 @@
 			"cost": {
 				"coins": 4
 			},
-			"description": "+2 Cards\nIf you have 5 or fewer cards in hand (after drawing), +2 Actions.\n---------\nWhen another player plays an Attack card, you may reveal this from a hand of 5 or more cards, to draw 2 cards then discard 3.",
 			"cardText": {
 				"aboveLine": "+2 Cards\nIf you have 5 or fewer cards in hand (after drawing), +2 Actions.",
 				"belowLine": "When another player plays an Attack card, you may reveal this from a hand of 5 or more cards, to draw 2 cards then discard 3."

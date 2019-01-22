@@ -12,7 +12,7 @@ type Kingdom []Card
 // RandomizeKingdom is a function which generates a randomized kingdom.
 func RandomizeKingdom(numCards int) Kingdom {
 	k := []Card{}
-	setCards := shuffle(getSetCards())
+	setCards := shuffle(getSetCards(), 5)
 
 	blacklistMap := map[string]bool{}
 	for _, c := range Blacklist {

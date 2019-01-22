@@ -18,6 +18,28 @@ type cardViewModel struct {
 	Debt        int
 }
 
+func getNonActionType(types []string) string {
+	for _, t := range types {
+		if strings.ToLower(t) != "action" {
+			return t
+		}
+	}
+
+	return ""
+}
+
+func (c cardViewModel) GetCSSClass() string {
+	if len(c.Types[0]) > 0 {
+		return strings.ToLower(getNonActionType(c.Types))
+	}
+
+	return ""
+}
+
+func (c cardViewModel) GetTypesHTML() string {
+	return strings.Join(c.Types, ", ")
+}
+
 func toCardViewModel(c dominionizer.Card) cardViewModel {
 	vm := cardViewModel{
 		Name:    c.Name,

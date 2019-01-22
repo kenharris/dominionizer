@@ -6,15 +6,23 @@
                float: left;
                width: 17%;
                border: solid thin black;
+               border-radius: 10px;
                margin-right: 10px;
                margin-bottom: 10px;
                padding: 10px;
 
                min-height: 200px;
-               height: 400px;
+               height: 250px;
 
                position: relative;
+
+               border-color: #b0b3ae;
+               background-color: #b0b3ae;
            }
+
+           .card.reaction { border-color: #6e98c7; background-color: #6e98c7; }
+           .card.victory { border-color: #81de77; background-color: #81de77; }
+           .card.treasure { border-color: #f3db4d; background-color: #f3db4d; }
 
            .card .top-area .card-name {
                text-align: center;
@@ -45,7 +53,7 @@
            }
 
            .card h2 {
-               margin-bottom: 5px;
+               margin: 5px auto;
            }           
         </style>
     </head>
@@ -54,12 +62,16 @@
             <h1>Kingdom - {{ .Count }} <button>Randomize!</button></h1>
             <input type="hidden" name="count" value="{{ .NextNum }}" />            
             {{ range $index, $card := .Cards }}
-                <div class="card">
+                <div class="card {{ $card.GetCSSClass }}">
+                    <!-- {{ $card.Set }}</em><br /> -->
+                    <!--
+                    {{ if $card.Categories }}
+                    <p>Categories: {{ $card.Categories }}</p>
+                    {{ end }}
+                    -->
                     <div class="top-area">
                         <h2 class="card-name">{{ $card.Name }}</h2>
                     </div>
-
-                    <em>{{ $card.Set }}</em><br />
 
                     <div class="bottom-area">
                         <div class="card-cost">
@@ -68,13 +80,9 @@
                             {{ if $card.Debt }}<span class="debt">{{ $card.Debt }}D</span>{{ end }}
                         </div>
                         {{ if $card.Types }}
-                        <div class="card-types">{{ $card.Types }}</div>
+                        <div class="card-types">{{ $card.GetTypesHTML }}</div>
                         {{ end }}
                     </div>
-                    
-                    {{ if $card.Categories }}
-                    <p>Categories: {{ $card.Categories }}</p>
-                    {{ end }}
 
                     {{ $card.Description }}
                 </div>

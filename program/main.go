@@ -16,9 +16,9 @@ func prettyPrintJSON(v interface{}) {
 
 func main() {
 	dominionizer.CardReader = djson.CardReader{FilePath: "../json"}
-	// dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetIntrigue, dominionizer.SetSeaside}
-	dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetAlchemy}
-	dominionizer.Blacklist = []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"}
+	dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetIntrigue, dominionizer.SetSeaside}
+	// dominionizer.Sets = []dominionizer.SetName{dominionizer.SetDominion, dominionizer.SetAlchemy}
+	//dominionizer.Blacklist = []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"}
 
 	kingdom := dominionizer.RandomizeKingdom(10)
 	prettyPrintJSON(kingdom)

@@ -36,7 +36,7 @@
 			},
 			"cardText": {
 				"aboveLine": "+2 Cards",
-				"beloLine": "When another player plays an Attack card, you may first reveal this from your hand, to be unaffected by it."
+				"belowLine": "When another player plays an Attack card, you may first reveal this from your hand, to be unaffected by it."
 			}
 		},
 		{
