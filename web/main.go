@@ -9,7 +9,6 @@ import (
 
 	"github.com/kenharris/dominionizer"
 	"github.com/kenharris/dominionizer/json"
-	jsonState "github.com/kenharris/dominionizer/web/state/json"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -26,31 +25,14 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Printf("Count: %d\n", count)
 
-	sm := jsonState.NewStateManager("test")
-	s := sm.ReadState()
-	fmt.Printf("State blacklist: %v\n", s.Blacklist)
-	s.Blacklist = append(s.Blacklist, "Chapel")
-	sm.WriteState(s)
+	// sm := json.NewStateManager("test")
+	// s := sm.ReadState()
+	// fmt.Printf("State blacklist: %v\n", s.Blacklist)
+	// s.Blacklist = append(s.Blacklist, "Chapel")
+	// sm.WriteState(s)
 
-	dominionizer.CardReader = json.CardReader{FilePath: "../json"}
-	dominionizer.Sets = []dominionizer.SetName{
-		dominionizer.SetDominion,
-		dominionizer.SetAlchemy,
-		dominionizer.SetIntrigue,
-		dominionizer.SetSeaside,
-		dominionizer.SetProsperity,
-		dominionizer.SetCornucopia,
-		dominionizer.SetHinterlands,
-		dominionizer.SetDarkAges,
-		dominionizer.SetGuilds,
-		dominionizer.SetAdventures,
-		dominionizer.SetEmpires,
-		dominionizer.SetNocturne,
-		dominionizer.SetRenaissance,
-	}
-	dominionizer.Blacklist = []string{"Chapel", "Bandit", "Mine", "Library", "Cellar", "Sentry", "Council Room"}
-
-	kingdom := dominionizer.RandomizeKingdom(10)
+	randomizer := dominionizer.CreateRandomizer("test", json.StateReader{FilePath: "./state"}, json.CardReader{FilePath: "../json"})
+	kingdom := randomizer.RandomizeKingdom(10)
 	kingdom.SortByName()
 	t, _ := template.ParseFiles("home.html")
 

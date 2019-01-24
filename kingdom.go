@@ -9,31 +9,6 @@ import (
 // Kingdom is a type made from a slice of Card objects.
 type Kingdom []Card
 
-// RandomizeKingdom is a function which generates a randomized kingdom.
-func RandomizeKingdom(numCards int) Kingdom {
-	k := []Card{}
-	setCards := shuffle(getSetCards(), 5)
-
-	blacklistMap := map[string]bool{}
-	for _, c := range Blacklist {
-		blacklistMap[c] = true
-	}
-
-	cardIndex := 0
-	for len(k) < numCards && cardIndex < len(setCards) {
-		cardToConsider := setCards[cardIndex]
-		cardIndex++
-
-		if blacklistMap[cardToConsider.Name] == true {
-			continue
-		}
-
-		k = append(k, cardToConsider)
-	}
-
-	return k
-}
-
 // SortByName sorts cards in kingdom by name
 func (cards Kingdom) SortByName() {
 	sort.Slice(cards, func(i, j int) bool {
