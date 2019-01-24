@@ -12,7 +12,7 @@ func (r Randomizer) RandomizeKingdom(numCards int) Kingdom {
 	s := r.sr.ReadState(r.id)
 
 	k := []Card{}
-	setCards := shuffle(getSetCards(r.cr, s), 5)
+	setCards := shuffle(getSetCards(r.cr.ReadCards(), s.Sets), 5)
 
 	blacklistMap := map[string]bool{}
 	for _, c := range s.Blacklist {
@@ -34,15 +34,13 @@ func (r Randomizer) RandomizeKingdom(numCards int) Kingdom {
 	return k
 }
 
-func getSetCards(cr CardDataReader, s State) []Card {
+func getSetCards(cards []Card, setNames []SetName) []Card {
 	sets := map[SetName]bool{}
-	for _, s := range s.Sets {
+	for _, s := range setNames {
 		sets[s] = true
 	}
 
-	cards := cr.ReadCards()
 	retCards := []Card{}
-
 	for _, c := range cards {
 		if sets[c.Set] == true {
 			retCards = append(retCards, c)
