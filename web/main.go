@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
@@ -8,7 +9,7 @@ import (
 	"strconv"
 
 	"github.com/kenharris/dominionizer"
-	"github.com/kenharris/dominionizer/json"
+	djson "github.com/kenharris/dominionizer/json"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -31,7 +32,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	// s.Blacklist = append(s.Blacklist, "Chapel")
 	// sm.WriteState(s)
 
-	randomizer := dominionizer.CreateRandomizer("test", json.StateReader{FilePath: "./state"}, json.CardReader{FilePath: "../json"})
+	randomizer := dominionizer.CreateRandomizer("test", djson.StateReader{FilePath: "./state"}, djson.CardReader{FilePath: "../json"})
 	kingdom := randomizer.RandomizeKingdom(10)
 	kingdom.SortByName()
 	t, _ := template.ParseFiles("home.html")
@@ -46,7 +47,32 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, vm)
 }
 
+func blacklistHandler(w http.ResponseWriter, r *http.Request) {
+	sr := djson.StateReader{FilePath: "./state"}
+	s := sr.ReadState("test")
+
+	r.ParseForm()
+	card := r.Form.Get("card")
+	method := r.Method
+
+	switch method {
+	case "DELETE":
+		s.RemoveCardFromBlacklist(card)
+	case "POST":
+		s.AddCardToBlacklist(card)
+	}
+
+	sw := djson.StateWriter{FilePath: "./state"}
+	sw.WriteState("test", s)
+
+	bytes, _ := json.Marshal(s.Blacklist)
+
+	w.WriteHeader(200)
+	w.Write(bytes)
+}
+
 func main() {
 	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/api/blacklist", blacklistHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
